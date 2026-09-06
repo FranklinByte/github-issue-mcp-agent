@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling==1.29.0"]
+build-backend = "hatchling.build"
+
+[project]
+name = "github-issue-mcp-agent"
+version = "1.0.0"
+description = "Bounded GitHub issue triage with MCP and durable human approval"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "mcp==2.1.1", "fastapi>=0.115,<1", "uvicorn>=0.34,<1",
+  "httpx==0.28.1", "pydantic>=2.12,<3", "jsonschema>=4.23,<5",
+]
+
+[dependency-groups]
+dev = ["pytest>=8.4,<10", "pytest-asyncio>=1,<2", "pytest-cov>=7,<8",
+       "ruff>=0.12,<1", "mypy>=1.16,<2", "types-jsonschema", "playwright>=1.55,<2"]
+
+[project.scripts]
+issue-mcp = "issue_agent.server:main"
+issue-web = "issue_agent.api:main"
+issue-eval = "issue_agent.evaluation:main"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/issue_agent"]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+addopts = "-q"
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.mypy]
+python_version = "3.12"
+strict = true
+files = ["src/issue_agent"]
+
+[tool.coverage.run]
+branch = true
+source = ["issue_agent"]
+patch = ["subprocess"]
+
+[tool.coverage.report]
+show_missing = true
+fail_under = 80
+
