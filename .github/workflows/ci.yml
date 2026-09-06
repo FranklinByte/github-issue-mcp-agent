@@ -1,0 +1,33 @@
+name: Local-Mock Quality Gates
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  quality:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install uv==0.12.10
+      - run: uv sync --frozen
+      - run: uv run ruff format --check src tests scripts
+      - run: uv run ruff check src tests scripts
+      - run: uv run mypy src
+      - run: uv run pytest --cov=issue_agent --cov-branch --cov-report=xml --cov-report=json:artifacts/coverage.json
+      - run: >-
+          uv run python -c "import json; t=json.load(open('artifacts/coverage.json'))['totals'];
+          assert t['covered_branches']/t['num_branches'] >= 0.8"
+      - run: uv run python scripts/mcp_smoke.py
+      - run: uv run issue-eval --output artifacts/offline
+      - run: uv run python scripts/docker_verify.py
+      - run: uv run playwright install --with-deps chromium
+      - run: uv run python scripts/ui_verify.py
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: mock-verification
+          path: artifacts/
+      - run: docker compose down
+        if: always()
