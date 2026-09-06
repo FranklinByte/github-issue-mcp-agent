@@ -1,0 +1,281 @@
+[
+  {
+    "name": "annotated-doc",
+    "version": "0.0.5",
+    "license": "MIT"
+  },
+  {
+    "name": "annotated-types",
+    "version": "0.8.0",
+    "license": "MIT"
+  },
+  {
+    "name": "anyio",
+    "version": "4.15.1",
+    "license": "MIT"
+  },
+  {
+    "name": "attrs",
+    "version": "26.1.0",
+    "license": "MIT"
+  },
+  {
+    "name": "certifi",
+    "version": "2026.7.22",
+    "license": "MPL-2.0"
+  },
+  {
+    "name": "cffi",
+    "version": "2.1.1",
+    "license": "MIT-0"
+  },
+  {
+    "name": "click",
+    "version": "8.5.0",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "colorama",
+    "version": "0.4.6",
+    "license": [
+      "License :: OSI Approved :: BSD License"
+    ]
+  },
+  {
+    "name": "coverage",
+    "version": "7.16.0",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "cryptography",
+    "version": "50.0.1",
+    "license": "Apache-2.0 OR BSD-3-Clause"
+  },
+  {
+    "name": "fastapi",
+    "version": "0.141.1",
+    "license": "MIT"
+  },
+  {
+    "name": "github-issue-mcp-agent",
+    "version": "1.0.0",
+    "license": []
+  },
+  {
+    "name": "greenlet",
+    "version": "3.5.5",
+    "license": "MIT AND PSF-2.0"
+  },
+  {
+    "name": "h11",
+    "version": "0.16.0",
+    "license": "MIT"
+  },
+  {
+    "name": "httpcore",
+    "version": "1.0.9",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "httpcore2",
+    "version": "2.12.0",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "httpx",
+    "version": "0.28.1",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "httpx2",
+    "version": "2.12.0",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "idna",
+    "version": "3.19",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "iniconfig",
+    "version": "2.3.0",
+    "license": "MIT"
+  },
+  {
+    "name": "jsonschema",
+    "version": "4.26.0",
+    "license": "MIT"
+  },
+  {
+    "name": "jsonschema-specifications",
+    "version": "2025.9.1",
+    "license": "MIT"
+  },
+  {
+    "name": "librt",
+    "version": "0.15.0",
+    "license": "MIT"
+  },
+  {
+    "name": "mcp",
+    "version": "2.1.1",
+    "license": "MIT"
+  },
+  {
+    "name": "mcp-types",
+    "version": "2.1.1",
+    "license": "MIT"
+  },
+  {
+    "name": "mypy",
+    "version": "1.20.2",
+    "license": "MIT"
+  },
+  {
+    "name": "mypy_extensions",
+    "version": "1.1.0",
+    "license": "MIT"
+  },
+  {
+    "name": "opentelemetry-api",
+    "version": "1.44.0",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "packaging",
+    "version": "26.3",
+    "license": "Apache-2.0 OR BSD-2-Clause"
+  },
+  {
+    "name": "pathspec",
+    "version": "1.1.1",
+    "license": [
+      "License :: OSI Approved :: Mozilla Public License 2.0 (MPL 2.0)"
+    ]
+  },
+  {
+    "name": "pip",
+    "version": "25.0.1",
+    "license": "MIT"
+  },
+  {
+    "name": "playwright",
+    "version": "1.62.0",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "pluggy",
+    "version": "1.6.0",
+    "license": "MIT"
+  },
+  {
+    "name": "pycparser",
+    "version": "3.0",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "pydantic",
+    "version": "2.13.5",
+    "license": "MIT"
+  },
+  {
+    "name": "pydantic_core",
+    "version": "2.46.5",
+    "license": "MIT"
+  },
+  {
+    "name": "pyee",
+    "version": "13.0.1",
+    "license": "MIT"
+  },
+  {
+    "name": "Pygments",
+    "version": "2.21.0",
+    "license": "BSD-2-Clause"
+  },
+  {
+    "name": "PyJWT",
+    "version": "2.13.0",
+    "license": "MIT"
+  },
+  {
+    "name": "pytest",
+    "version": "9.1.1",
+    "license": "MIT"
+  },
+  {
+    "name": "pytest-asyncio",
+    "version": "1.4.0",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "pytest-cov",
+    "version": "7.1.0",
+    "license": "MIT"
+  },
+  {
+    "name": "python-multipart",
+    "version": "0.0.32",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "pywin32",
+    "version": "312",
+    "license": "PSF"
+  },
+  {
+    "name": "referencing",
+    "version": "0.37.0",
+    "license": "MIT"
+  },
+  {
+    "name": "rpds-py",
+    "version": "2026.6.3",
+    "license": "MIT"
+  },
+  {
+    "name": "ruff",
+    "version": "0.16.6",
+    "license": "MIT"
+  },
+  {
+    "name": "sse-starlette",
+    "version": "3.4.11",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "starlette",
+    "version": "1.6.0",
+    "license": "BSD-3-Clause"
+  },
+  {
+    "name": "truststore",
+    "version": "0.10.4",
+    "license": "MIT"
+  },
+  {
+    "name": "types-jsonschema",
+    "version": "4.26.0.20260518",
+    "license": "Apache-2.0"
+  },
+  {
+    "name": "typing_extensions",
+    "version": "4.16.0",
+    "license": "PSF-2.0"
+  },
+  {
+    "name": "typing-inspection",
+    "version": "0.4.4",
+    "license": "MIT"
+  },
+  {
+    "name": "uv",
+    "version": "0.12.10",
+    "license": "MIT OR Apache-2.0"
+  },
+  {
+    "name": "uvicorn",
+    "version": "0.52.4",
+    "license": "BSD-3-Clause"
+  }
+]

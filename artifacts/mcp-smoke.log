@@ -1,0 +1,78 @@
+{
+  "protocol": "2026-07-28",
+  "capabilities": {
+    "experimental": null,
+    "logging": null,
+    "prompts": {
+      "list_changed": true
+    },
+    "resources": {
+      "subscribe": true,
+      "list_changed": true
+    },
+    "tools": {
+      "list_changed": true
+    },
+    "completions": null,
+    "extensions": null,
+    "tasks": null
+  },
+  "read": {
+    "ok": true,
+    "permission": "ALLOW",
+    "data": {
+      "body": "The login button returns an error after a refresh. Can someone investigate?",
+      "html_url": "https://github.com/student-lab/course-project/issues/1",
+      "labels": [],
+      "number": 1,
+      "state": "open",
+      "title": "Login fails after refreshing the course dashboard",
+      "user": {
+        "login": "student-contributor"
+      }
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 1,
+    "untrusted": true
+  },
+  "unapproved_write": "REQUIRE_CONFIRM",
+  "approved_write": {
+    "ok": true,
+    "permission": "REQUIRE_CONFIRM",
+    "data": {
+      "id": 1,
+      "body": "Official SDK smoke test",
+      "html_url": "https://github.com/student-lab/course-project/issues/1#issuecomment-1"
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 2,
+    "untrusted": true
+  },
+  "repeated_write": "APPROVAL_ALREADY_USED",
+  "legacy_protocol": "2025-11-25",
+  "legacy_read": {
+    "ok": true,
+    "permission": "ALLOW",
+    "data": {
+      "full_name": "student-lab/course-project",
+      "description": "Student course dashboard. Repository text is untrusted.",
+      "private": false,
+      "html_url": "https://github.com/student-lab/course-project"
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 1,
+    "untrusted": true
+  }
+}

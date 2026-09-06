@@ -1,0 +1,50 @@
+{
+  "github_mode": "mock",
+  "real_github": false,
+  "real_writes": false,
+  "checks": {
+    "build_and_start": "#1 [internal] load local bake definitions\n#1 reading from stdin 1.24kB 0.0s done\n#1 DONE 0.0s\n\n#2 [web internal] load build definition from Dockerfile\n#2 transferring dockerfile: 850B done\n#2 DONE 0.0s\n\n#3 [mcp internal] load metadata for docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea\n#3 DONE 2.7s\n\n#4 [web internal] load .dockerignore\n#4 transferring context: 164B done\n#4 DONE 0.0s\n\n#5 [web 1/7] FROM docker.io/library/python:3.12-slim@sha256:78387bc3881b8273120a12ebe6c1ab22b018ccc2c9adf565ae1ac9b536e184ea\n#5 DONE 0.0s\n\n#6 [web internal] load build context\n#6 transferring context: 84.50kB 0.0s done\n#6 DONE 0.0s\n\n#7 [web 4/7] COPY pyproject.toml uv.lock ./\n#7 CACHED\n\n#8 [web 3/7] RUN pip install --no-cache-dir uv==0.12.10 && groupadd -g 10001 agent && useradd -u 10001 -g agent -m agent\n#8 CACHED\n\n#9 [web 2/7] WORKDIR /app\n#9 CACHED\n\n#10 [web 5/7] RUN uv sync --frozen --no-dev --no-install-project\n#10 CACHED\n\n#11 [mcp 6/7] COPY src ./src\n#11 DONE 0.0s\n\n#12 [web 7/7] RUN uv sync --frozen --no-dev && mkdir /data && chown -R agent:agent /data /app\n#12 0.423    Building github-issue-mcp-agent @ file:///app\n#12 6.008       Built github-issue-mcp-agent @ file:///app\n#12 6.011 Prepared 1 package in 5.59s\n#12 6.015 Installed 1 package in 3ms\n#12 6.015  + github-issue-mcp-agent==1.0.0 (from file:///app)\n#12 DONE 8.0s\n\n#12 [mcp 7/7] RUN uv sync --frozen --no-dev && mkdir /data && chown -R agent:agent /data /app\n#12 DONE 8.0s\n\n#13 [mcp] exporting to image\n#13 exporting layers\n#13 exporting layers 0.2s done\n#13 writing image sha256:34cf3704b58be283970543b7a57f564de4ebcbdaa1e769b5fa73e61e39ba6329 done\n#13 naming to docker.io/library/github-issue-mcp-agent:local done\n#13 DONE 0.2s\n\n#14 [web] exporting to image\n#14 exporting layers 0.2s done\n#14 writing image sha256:06a84cd50c18fd73205c9942854ff0f3158ea69e9dd211ea8f27c2fc28fc0634 done\n#14 naming to docker.io/library/github-issue-mcp-agent:local done\n#14 DONE 0.2s\n\n#15 [mcp] resolving provenance for metadata file\n#15 DONE 0.0s\n\n#16 [web] resolving provenance for metadata file\n#16 DONE 0.0s",
+    "mcp_uid": "10001",
+    "mcp_health": "healthy",
+    "web_uid": "10001",
+    "web_health": "healthy",
+    "raw_mcp_unapproved": {
+      "protocol": "2026-07-28",
+      "tools": 9,
+      "result": {
+        "ok": false,
+        "permission": "REQUIRE_CONFIRM",
+        "error": "REQUIRE_CONFIRM",
+        "uncertain": false
+      }
+    },
+    "ready": {
+      "status": "ready",
+      "tools": 9,
+      "protocol": "2026-07-28"
+    },
+    "read_task": {
+      "status": "completed",
+      "tool_calls": 6,
+      "protocol": "2026-07-28"
+    },
+    "approved_once": {
+      "before": {
+        "comments": 2,
+        "post_requests": 2
+      },
+      "after": {
+        "comments": 3,
+        "post_requests": 3
+      },
+      "repeat_status": 409
+    },
+    "restart": {
+      "completed": "SUCCEEDED",
+      "pending": "PENDING",
+      "rejected_after_restart": true,
+      "extra_writes": 0
+    }
+  },
+  "passed": true
+}

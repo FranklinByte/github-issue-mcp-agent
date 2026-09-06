@@ -1,0 +1,197 @@
+{
+  "retrieved_at": "2026-09-06T18:04:29.734679+00:00",
+  "repositories": [
+    {
+      "name": "modelcontextprotocol/python-sdk",
+      "url": "https://github.com/modelcontextprotocol/python-sdk",
+      "pushed_at": "2026-09-06T14:05:09Z",
+      "archived": false,
+      "license_metadata": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "release": {
+        "tag_name": "v2.0.1",
+        "published_at": "2026-08-26T10:42:44Z",
+        "html_url": "https://github.com/modelcontextprotocol/python-sdk/releases/tag/v2.0.1"
+      },
+      "tree_sha": "08a3bc8eaf5bb69a6cb05ac708a86f5325977c20",
+      "test_paths_sample": [
+        ".claude/skills/test-quality/SKILL.md",
+        ".github/scripts/docs_preview.test.js",
+        ".github/scripts/pr_intake_gate.test.js",
+        "docs/get-started/testing.md",
+        "docs_src/testing/__init__.py",
+        "docs_src/testing/tutorial001.py",
+        "examples/clients/simple-chatbot/mcp_simple_chatbot/test.db",
+        "i18n/de/pages/get-started/testing.md",
+        "i18n/es/pages/get-started/testing.md",
+        "i18n/fr/pages/get-started/testing.md",
+        "i18n/hi/pages/get-started/testing.md",
+        "i18n/ja/pages/get-started/testing.md"
+      ],
+      "license_paths": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "github/github-mcp-server",
+      "url": "https://github.com/github/github-mcp-server",
+      "pushed_at": "2026-09-05T05:18:11Z",
+      "archived": false,
+      "license_metadata": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "release": {
+        "tag_name": "v1.12.0",
+        "published_at": "2026-09-03T14:05:12Z",
+        "html_url": "https://github.com/github/github-mcp-server/releases/tag/v1.12.0"
+      },
+      "tree_sha": "9205304fedf10540c33ae41fcf6352fa97dcc9be",
+      "test_paths_sample": [
+        "cmd/github-mcp-server/main_test.go",
+        "cmd/mcpcurl/main_test.go",
+        "docs/testing.md",
+        "e2e/e2e_test.go",
+        "internal/ghmcp/oauth_test.go",
+        "internal/ghmcp/server_test.go",
+        "internal/githubapp/githubapp_test.go",
+        "internal/githubv4mock/objects_are_equal_values_test.go",
+        "internal/oauth/callback_test.go",
+        "internal/oauth/manager_test.go",
+        "internal/oauth/oauth_test.go",
+        "internal/oauth/testutil_test.go"
+      ],
+      "license_paths": [
+        ".github/licenses.tmpl",
+        "LICENSE",
+        "script/licenses",
+        "script/licenses-check",
+        "third-party-licenses.darwin.md",
+        "third-party-licenses.linux.md",
+        "third-party-licenses.windows.md"
+      ]
+    },
+    {
+      "name": "modelcontextprotocol/inspector",
+      "url": "https://github.com/modelcontextprotocol/inspector",
+      "pushed_at": "2026-09-06T18:03:27Z",
+      "archived": false,
+      "license_metadata": null,
+      "release": {
+        "tag_name": "2.5.0",
+        "published_at": "2026-09-02T16:40:18Z",
+        "html_url": "https://github.com/modelcontextprotocol/inspector/releases/tag/2.5.0"
+      },
+      "tree_sha": "793d103db2538e1e8cf7e2eebee6330eeb51a02f",
+      "test_paths_sample": [
+        ".claude/skills/test-servers/SKILL.md",
+        ".claude/skills/test-servers/evals/evals.json",
+        ".claude/skills/testing/SKILL.md",
+        ".claude/skills/testing/evals/evals.json",
+        "clients/cli/__tests__/README.md",
+        "clients/cli/__tests__/app-info.test.ts",
+        "clients/cli/__tests__/clear-stored-auth-for-relogin.test.ts",
+        "clients/cli/__tests__/cli-oauth-navigation.test.ts",
+        "clients/cli/__tests__/cli.test.ts",
+        "clients/cli/__tests__/cliOAuth.test.ts",
+        "clients/cli/__tests__/e2e.test.ts",
+        "clients/cli/__tests__/emit-result.test.ts"
+      ],
+      "license_paths": []
+    },
+    {
+      "name": "langchain-ai/langchain-mcp-adapters",
+      "url": "https://github.com/langchain-ai/langchain-mcp-adapters",
+      "pushed_at": "2026-09-01T22:19:51Z",
+      "archived": false,
+      "license_metadata": {
+        "key": "mit",
+        "name": "MIT License",
+        "spdx_id": "MIT",
+        "url": "https://api.github.com/licenses/mit",
+        "node_id": "MDc6TGljZW5zZTEz"
+      },
+      "release": {
+        "tag_name": "langchain-mcp-adapters==0.3.2",
+        "published_at": "2026-08-06T06:15:24Z",
+        "html_url": "https://github.com/langchain-ai/langchain-mcp-adapters/releases/tag/langchain-mcp-adapters%3D%3D0.3.2"
+      },
+      "tree_sha": "cc0f2843fd5becf2cdb641c910533c3747c3b1ef",
+      "test_paths_sample": [
+        ".github/workflows/_test.yml",
+        "tests/__init__.py",
+        "tests/conftest.py",
+        "tests/servers/__init__.py",
+        "tests/servers/math_server.py",
+        "tests/servers/time_server.py",
+        "tests/servers/weather_server.py",
+        "tests/test_callbacks.py",
+        "tests/test_client.py",
+        "tests/test_elicitation.py",
+        "tests/test_import.py",
+        "tests/test_interceptors.py"
+      ],
+      "license_paths": [
+        "LICENSE"
+      ]
+    },
+    {
+      "name": "modelcontextprotocol/servers",
+      "url": "https://github.com/modelcontextprotocol/servers",
+      "pushed_at": "2026-09-03T01:42:26Z",
+      "archived": false,
+      "license_metadata": {
+        "key": "other",
+        "name": "Other",
+        "spdx_id": "NOASSERTION",
+        "url": null,
+        "node_id": "MDc6TGljZW5zZTA="
+      },
+      "release": {
+        "tag_name": "2026.8.31",
+        "published_at": "2026-08-31T20:34:32Z",
+        "html_url": "https://github.com/modelcontextprotocol/servers/releases/tag/2026.8.31"
+      },
+      "tree_sha": "d73f99efbfd40c3aa1b61e88728b3d49fb52608f",
+      "test_paths_sample": [
+        "src/everything/__tests__/prompts.test.ts",
+        "src/everything/__tests__/registrations.test.ts",
+        "src/everything/__tests__/resources.test.ts",
+        "src/everything/__tests__/server.test.ts",
+        "src/everything/__tests__/tools.test.ts",
+        "src/everything/vitest.config.ts",
+        "src/fetch/tests/__init__.py",
+        "src/fetch/tests/test_server.py",
+        "src/filesystem/__tests__/directory-tree.mcp-sdk.test.ts",
+        "src/filesystem/__tests__/directory-tree.test.ts",
+        "src/filesystem/__tests__/lib.test.ts",
+        "src/filesystem/__tests__/nested-parents.test.ts"
+      ],
+      "license_paths": [
+        "LICENSE"
+      ]
+    }
+  ],
+  "mcp_pypi_latest": "2.1.1",
+  "mcp_installed": "2.1.1",
+  "mcp_artifacts": [
+    {
+      "filename": "mcp-2.1.1-py3-none-any.whl",
+      "uploaded": "2026-08-25T16:13:59.024858Z",
+      "sha256": "1c6c31c5d6471c58db76af3af8af67f46d11d01f0a59077d0a308cbdb3d3e915"
+    },
+    {
+      "filename": "mcp-2.1.1.tar.gz",
+      "uploaded": "2026-08-25T16:14:02.376457Z",
+      "sha256": "50b7ba1ebbe117008ea7bdd288234043e69c20b403d6851d19661e6d431a75ef"
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+........................................................................ [ 72%]
+...........................                                              [100%]
+=============================== tests coverage ================================
+______________ coverage: platform win32, python 3.12.10-final-0 _______________
+
+Name                             Stmts   Miss Branch BrPart  Cover   Missing
+----------------------------------------------------------------------------
+src\issue_agent\__init__.py          0      0      0      0   100%
+src\issue_agent\agent.py           141     12     50      7    89%   64->72, 158->160, 161->163, 188, 208, 260, 265-272, 284-285
+src\issue_agent\api.py             127      9     16      2    92%   56, 109-110, 169-170, 207-209, 213
+src\issue_agent\client.py           91     11     32      9    84%   30->25, 33, 35, 44->46, 46->48, 69, 74, 77, 85-87, 107, 150-151
+src\issue_agent\config.py           34      0      6      1    98%   29->40
+src\issue_agent\evaluation.py      161     18     48      3    88%   165-169, 211-212, 279, 336-346, 350
+src\issue_agent\github.py          106      1     50      1    99%   176
+src\issue_agent\mock_github.py      81      2     34      2    97%   108, 148
+src\issue_agent\models.py           79      0      2      0   100%
+src\issue_agent\provider.py         38      3     14      2    90%   66, 69, 72
+src\issue_agent\security.py         74      4     22      0    96%   83, 87-89
+src\issue_agent\server.py           96     17     12      2    81%   73->75, 104, 109, 114, 121, 128, 135, 142, 172-181, 185
+src\issue_agent\storage.py         153      0     34      0   100%
+----------------------------------------------------------------------------
+TOTAL                             1181     77    320     29    92%
+Coverage XML written to file artifacts/coverage.xml
+Coverage JSON written to file artifacts/coverage.json
+Required test coverage of 80.0% reached. Total coverage: 92.41%
+99 passed in 53.65s

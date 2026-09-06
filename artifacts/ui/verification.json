@@ -1,0 +1,51 @@
+[
+  {
+    "viewport": "desktop",
+    "width": 1440,
+    "height": 1000,
+    "overflow": {
+      "page": false,
+      "controls": []
+    },
+    "javascript_errors": [],
+    "reload_persistence": true
+  },
+  {
+    "viewport": "mobile",
+    "width": 390,
+    "height": 844,
+    "overflow": {
+      "page": false,
+      "controls": []
+    },
+    "javascript_errors": [],
+    "reload_persistence": true
+  },
+  {
+    "viewport": "narrow",
+    "width": 320,
+    "height": 740,
+    "overflow": {
+      "page": false,
+      "controls": []
+    },
+    "javascript_errors": [],
+    "reload_persistence": true
+  },
+  {
+    "viewport": "wide",
+    "width": 1920,
+    "height": 1080,
+    "overflow": {
+      "page": false,
+      "controls": []
+    },
+    "javascript_errors": [],
+    "reload_persistence": true
+  },
+  {
+    "approval_click": true,
+    "rate_limit_state": true,
+    "explicit_offline_degradation": true
+  }
+]

@@ -2,6 +2,8 @@
 
 核查日期：2026-09-07。来源是官方仓库 README、LICENSE、发布页、GitHub REST 元数据、PyPI 和官方协议文档。未 Fork、改名或复制任何完整服务。下表是调研时快照，不是持续更新的版本承诺。
 
+原始版本、维护时间、树SHA、许可证元数据与测试路径样本保存在 [research-snapshot.json](../artifacts/research-snapshot.json)，由 `scripts/research_snapshot.py` 只读获取。该脚本不运行上游测试，不把上游测试存在等同于本项目已验证。
+
 | 候选 | 维护快照 | 许可证核查 | 架构、测试与边界 | 决策 |
 | --- | --- | --- | --- | --- |
 | [Python SDK](https://github.com/modelcontextprotocol/python-sdk) | push 09-06；GitHub release v2.0.1；PyPI 最新稳定 2.1.1 | MIT | 官方 MCPServer / Client、类型生成 Schema；stdio / Streamable HTTP；pytest 协议交互测试。SDK 不替应用做仓库权限与审批 | 直接依赖 PyPI mcp==2.1.1，并在本地核查实际 API 和协议版本 |
@@ -31,4 +33,3 @@
 ## 集成风险
 
 新 SDK 2.x 与旧示例有破坏性差异，靠锁文件、stdio/HTTP/legacy 三类测试冻结行为。Docker HTTP 仅内部网络，不实现标准远程 OAuth，明确为本地演示传输。审批 API 属于本项目应用协议，不冒充 MCP 标准授权。当前没有真实 Provider、真实 GitHub 写入或真实用户研究证据。
-

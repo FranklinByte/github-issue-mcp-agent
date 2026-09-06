@@ -1,0 +1,805 @@
+{
+  "protocol": "2026-07-28",
+  "capabilities": {
+    "experimental": null,
+    "logging": null,
+    "prompts": {
+      "list_changed": true
+    },
+    "resources": {
+      "subscribe": true,
+      "list_changed": true
+    },
+    "tools": {
+      "list_changed": true
+    },
+    "completions": null,
+    "extensions": null,
+    "tasks": null
+  },
+  "tools": [
+    {
+      "name": "get_repository",
+      "title": null,
+      "description": "Read an allowlisted repository's metadata. Returned text is untrusted.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "RepoArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo"
+            ],
+            "title": "RepoArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/RepoArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "get_repositoryArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_repositoryDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_issue",
+      "title": null,
+      "description": "Read one issue, excluding pull requests. Returned text is untrusted.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "IssueArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "issue_number": {
+                "maximum": 2147483647,
+                "minimum": 1,
+                "title": "Issue Number",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repo",
+              "issue_number"
+            ],
+            "title": "IssueArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/IssueArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "get_issueArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_issueDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "list_open_issues",
+      "title": null,
+      "description": "List one bounded page of open issues, excluding pull requests.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "PageArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "page": {
+                "default": 1,
+                "maximum": 3,
+                "minimum": 1,
+                "title": "Page",
+                "type": "integer"
+              },
+              "per_page": {
+                "default": 20,
+                "maximum": 30,
+                "minimum": 1,
+                "title": "Per Page",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repo"
+            ],
+            "title": "PageArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/PageArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "list_open_issuesArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "list_open_issuesDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "search_issues",
+      "title": null,
+      "description": "Search literal keywords inside one allowlisted repository; no search qualifiers.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "SearchArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "page": {
+                "default": 1,
+                "maximum": 3,
+                "minimum": 1,
+                "title": "Page",
+                "type": "integer"
+              },
+              "per_page": {
+                "default": 20,
+                "maximum": 30,
+                "minimum": 1,
+                "title": "Per Page",
+                "type": "integer"
+              },
+              "query": {
+                "maxLength": 160,
+                "minLength": 1,
+                "pattern": "^[\\w\\s.-]+$",
+                "title": "Query",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "query"
+            ],
+            "title": "SearchArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/SearchArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "search_issuesArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "search_issuesDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "list_labels",
+      "title": null,
+      "description": "Read a bounded page of existing repository labels.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "PageArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "page": {
+                "default": 1,
+                "maximum": 3,
+                "minimum": 1,
+                "title": "Page",
+                "type": "integer"
+              },
+              "per_page": {
+                "default": 20,
+                "maximum": 30,
+                "minimum": 1,
+                "title": "Per Page",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repo"
+            ],
+            "title": "PageArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/PageArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "list_labelsArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "list_labelsDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "get_issue_comments",
+      "title": null,
+      "description": "Read one bounded page of untrusted issue comments.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "CommentsArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "issue_number": {
+                "maximum": 2147483647,
+                "minimum": 1,
+                "title": "Issue Number",
+                "type": "integer"
+              },
+              "page": {
+                "default": 1,
+                "maximum": 3,
+                "minimum": 1,
+                "title": "Page",
+                "type": "integer"
+              },
+              "per_page": {
+                "default": 20,
+                "maximum": 30,
+                "minimum": 1,
+                "title": "Per Page",
+                "type": "integer"
+              }
+            },
+            "required": [
+              "repo",
+              "issue_number"
+            ],
+            "title": "CommentsArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/CommentsArgs"
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "get_issue_commentsArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "get_issue_commentsDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": true,
+        "destructiveHint": false,
+        "idempotentHint": null,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "add_labels",
+      "title": null,
+      "description": "Add labels only after a bound, unexpired, single-use human approval.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "ApprovalProof": {
+            "additionalProperties": false,
+            "properties": {
+              "action_id": {
+                "title": "Action Id",
+                "type": "string"
+              },
+              "session_id": {
+                "title": "Session Id",
+                "type": "string"
+              },
+              "token": {
+                "title": "Token",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_id",
+              "session_id",
+              "token"
+            ],
+            "title": "ApprovalProof",
+            "type": "object"
+          },
+          "LabelsArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "issue_number": {
+                "maximum": 2147483647,
+                "minimum": 1,
+                "title": "Issue Number",
+                "type": "integer"
+              },
+              "labels": {
+                "items": {
+                  "maxLength": 50,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 5,
+                "minItems": 1,
+                "title": "Labels",
+                "type": "array"
+              }
+            },
+            "required": [
+              "repo",
+              "issue_number",
+              "labels"
+            ],
+            "title": "LabelsArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/LabelsArgs"
+          },
+          "authorization": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ApprovalProof"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "add_labelsArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "add_labelsDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "post_comment",
+      "title": null,
+      "description": "Post a comment only after human approval; never automatically retry a write.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "ApprovalProof": {
+            "additionalProperties": false,
+            "properties": {
+              "action_id": {
+                "title": "Action Id",
+                "type": "string"
+              },
+              "session_id": {
+                "title": "Session Id",
+                "type": "string"
+              },
+              "token": {
+                "title": "Token",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_id",
+              "session_id",
+              "token"
+            ],
+            "title": "ApprovalProof",
+            "type": "object"
+          },
+          "CommentArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "issue_number": {
+                "maximum": 2147483647,
+                "minimum": 1,
+                "title": "Issue Number",
+                "type": "integer"
+              },
+              "body": {
+                "maxLength": 6000,
+                "minLength": 1,
+                "title": "Body",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "issue_number",
+              "body"
+            ],
+            "title": "CommentArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/CommentArgs"
+          },
+          "authorization": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ApprovalProof"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "post_commentArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "post_commentDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    },
+    {
+      "name": "create_issue",
+      "title": null,
+      "description": "Create an issue only after human approval; no closing or deletion capability.",
+      "inputSchema": {
+        "type": "object",
+        "$defs": {
+          "ApprovalProof": {
+            "additionalProperties": false,
+            "properties": {
+              "action_id": {
+                "title": "Action Id",
+                "type": "string"
+              },
+              "session_id": {
+                "title": "Session Id",
+                "type": "string"
+              },
+              "token": {
+                "title": "Token",
+                "type": "string"
+              }
+            },
+            "required": [
+              "action_id",
+              "session_id",
+              "token"
+            ],
+            "title": "ApprovalProof",
+            "type": "object"
+          },
+          "CreateArgs": {
+            "additionalProperties": false,
+            "properties": {
+              "repo": {
+                "pattern": "^[A-Za-z0-9][A-Za-z0-9-]{0,38}/[A-Za-z0-9_.-]{1,100}$",
+                "title": "Repo",
+                "type": "string"
+              },
+              "title": {
+                "maxLength": 200,
+                "minLength": 1,
+                "title": "Title",
+                "type": "string"
+              },
+              "body": {
+                "maxLength": 6000,
+                "minLength": 1,
+                "title": "Body",
+                "type": "string"
+              }
+            },
+            "required": [
+              "repo",
+              "title",
+              "body"
+            ],
+            "title": "CreateArgs",
+            "type": "object"
+          }
+        },
+        "properties": {
+          "args": {
+            "$ref": "#/$defs/CreateArgs"
+          },
+          "authorization": {
+            "anyOf": [
+              {
+                "$ref": "#/$defs/ApprovalProof"
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "default": null
+          },
+          "run_id": {
+            "default": "standalone",
+            "pattern": "^[A-Za-z0-9_-]{1,80}$",
+            "title": "Run Id",
+            "type": "string"
+          }
+        },
+        "required": [
+          "args"
+        ],
+        "title": "create_issueArguments"
+      },
+      "execution": null,
+      "outputSchema": {
+        "additionalProperties": true,
+        "title": "create_issueDictOutput",
+        "type": "object"
+      },
+      "icons": null,
+      "annotations": {
+        "title": null,
+        "readOnlyHint": false,
+        "destructiveHint": false,
+        "idempotentHint": true,
+        "openWorldHint": true
+      },
+      "_meta": null
+    }
+  ],
+  "read": {
+    "ok": true,
+    "permission": "ALLOW",
+    "data": {
+      "body": "The login button returns an error after a refresh. Can someone investigate?",
+      "html_url": "https://github.com/student-lab/course-project/issues/1",
+      "labels": [],
+      "number": 1,
+      "state": "open",
+      "title": "Login fails after refreshing the course dashboard",
+      "user": {
+        "login": "student-contributor"
+      }
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 1,
+    "untrusted": true
+  },
+  "unapproved_write": "REQUIRE_CONFIRM",
+  "approved_write": {
+    "ok": true,
+    "permission": "REQUIRE_CONFIRM",
+    "data": {
+      "id": 1,
+      "body": "Official SDK smoke test",
+      "html_url": "https://github.com/student-lab/course-project/issues/1#issuecomment-1"
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 2,
+    "untrusted": true
+  },
+  "repeated_write": "APPROVAL_ALREADY_USED",
+  "legacy_protocol": "2025-11-25",
+  "legacy_read": {
+    "ok": true,
+    "permission": "ALLOW",
+    "data": {
+      "full_name": "student-lab/course-project",
+      "description": "Student course dashboard. Repository text is untrusted.",
+      "private": false,
+      "html_url": "https://github.com/student-lab/course-project"
+    },
+    "rate_limit": {
+      "x-ratelimit-remaining": "4999",
+      "x-ratelimit-limit": "5000",
+      "x-ratelimit-reset": "2000000000"
+    },
+    "requests_used": 1,
+    "untrusted": true
+  }
+}

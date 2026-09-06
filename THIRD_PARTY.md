@@ -6,6 +6,8 @@ Direct runtime dependencies: official `mcp` Python SDK (MIT), FastAPI (MIT), Uvi
 
 Development tools include pytest (MIT), pytest-asyncio (Apache-2.0), pytest-cov (MIT), coverage.py (Apache-2.0), Ruff (MIT), mypy (MIT), Playwright (Apache-2.0). Lucide icons (ISC) are used as UI assets; its license is retained alongside the local bundle. The synthetic evaluation cases and mock issue texts are original AI-assisted fixtures, not copied user content.
 
+Vendored visual assets: Lucide `1.41.0`, fetched from `https://unpkg.com/lucide@1.41.0/dist/umd/lucide.min.js`, with upstream `LICENSE` saved as `src/issue_agent/static/LUCIDE-LICENSE`. GitHub's mark PNG was fetched from `https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png` to identify the integration; GitHub trademarks remain GitHub's property and do not imply endorsement. No third-party tracking scripts, remote fonts or CDN requests are needed by the browser at runtime.
+
 Architecture references and dated source links: [docs/reuse-decisions.md](docs/reuse-decisions.md). The reference servers repository is in a licensing transition and the current Inspector root license could not be resolved; neither is redistributed. Do not infer a license grant from an old README or a missing GitHub SPDX field.
 
 This inventory is technical attribution, not a legal opinion. Before distributing new dependencies or copied material, inspect the license of the exact version.

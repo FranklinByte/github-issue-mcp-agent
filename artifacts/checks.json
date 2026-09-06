@@ -1,0 +1,78 @@
+{
+  "ruff-format": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "format",
+      "--check",
+      "src",
+      "tests",
+      "scripts"
+    ],
+    "exit_code": 0
+  },
+  "ruff": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "-m",
+      "ruff",
+      "check",
+      "src",
+      "tests",
+      "scripts"
+    ],
+    "exit_code": 0
+  },
+  "mypy": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "-m",
+      "mypy",
+      "src"
+    ],
+    "exit_code": 0
+  },
+  "dependencies": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\uv.exe",
+      "pip",
+      "check"
+    ],
+    "exit_code": 0
+  },
+  "pytest": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "-m",
+      "pytest",
+      "--cov=issue_agent",
+      "--cov-branch",
+      "--cov-report=term-missing",
+      "--cov-report=json:artifacts/coverage.json",
+      "--cov-report=xml:artifacts/coverage.xml",
+      "--junitxml=artifacts/pytest.xml"
+    ],
+    "exit_code": 0
+  },
+  "mcp-smoke": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "scripts/mcp_smoke.py"
+    ],
+    "exit_code": 0
+  },
+  "offline-eval": {
+    "command": [
+      "D:\\workEnvironment\\Career\\Rag&AgentCourses\\auxiliaryProgram\\2\\github-issue-mcp-agent\\.venv\\Scripts\\python.exe",
+      "-m",
+      "issue_agent.evaluation"
+    ],
+    "exit_code": 0
+  },
+  "branch_coverage": {
+    "percent": 88.4375,
+    "target": 80,
+    "passed": true
+  }
+}
