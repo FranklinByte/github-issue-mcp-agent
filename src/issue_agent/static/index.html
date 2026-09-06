@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Issue 协作工作台</title><link rel="icon" href="/static/github-mark.png">
+  <link rel="stylesheet" href="/static/style.css">
+  <script src="/static/lucide.min.js" defer></script><script src="/static/app.js" defer></script>
+</head>
+<body>
+<header><div class="brand"><img src="/static/github-mark.png" alt="GitHub" width="30" height="30"><span>Issue 协作工作台</span><span class="edition">MCP AGENT</span></div><div class="connection"><span class="dot"></span><span id="connection">连接中</span></div></header>
+<main>
+  <div class="page-heading"><div><p class="eyebrow">TEAM WORKSPACE</p><h1>Issue 分诊</h1></div><div class="mode-badges"><span class="badge" id="github-mode">MOCK</span><span class="badge" id="agent-mode">OFFLINE</span><button id="refresh" class="icon-button" title="刷新审批与审计" aria-label="刷新审批与审计"><i data-lucide="refresh-cw"></i></button></div></div>
+  <div class="workspace">
+    <aside>
+      <form id="task-form">
+        <h2><i data-lucide="git-pull-request"></i>任务</h2>
+        <label for="repo">GitHub 仓库</label><select id="repo" required></select>
+        <label for="issue">Issue 编号或 URL</label><input id="issue" value="1" required maxlength="300">
+        <label for="task">协作任务</label><textarea id="task" rows="5" maxlength="2000" required>检查这个 Issue 缺少什么信息，并建议标签和回复。</textarea>
+        <fieldset><legend>分析模式</legend><div class="segmented"><label><input type="radio" name="mode" value="offline" checked><span>Offline</span></label><label><input type="radio" name="mode" value="provider"><span>Model</span></label></div></fieldset>
+        <label class="check-line"><input id="allow-writes" type="checkbox"><span>生成写操作提案</span><i data-lucide="shield-check"></i></label>
+        <button id="run" class="primary" type="submit"><i data-lucide="play"></i><span>开始分析</span></button>
+      </form>
+      <div class="scope"><h3>权限边界</h3><p><span class="status allow">ALLOW</span>读取仓库与 Issue</p><p><span class="status confirm">REQUIRE_CONFIRM</span>标签、评论、新 Issue</p><p><span class="status block">BLOCK</span>删除、关闭、越权访问</p></div>
+      <details class="manual"><summary>手动创建提案</summary><form id="manual-form"><label for="manual-tool">工具</label><select id="manual-tool"><option value="post_comment">post_comment</option><option value="add_labels">add_labels</option><option value="create_issue">create_issue</option></select><label for="manual-args">完整参数 · JSON</label><textarea id="manual-args" rows="8" spellcheck="false"></textarea><button class="secondary" type="submit"><i data-lucide="plus"></i>提交提案</button></form></details>
+    </aside>
+    <div class="results">
+      <div id="notice" class="notice" role="status" hidden></div>
+      <section class="analysis-section"><div class="section-heading"><h2><i data-lucide="clipboard-list"></i>分析结果</h2><span id="task-status" class="muted">等待任务</span></div>
+        <div id="empty" class="empty"><i data-lucide="inbox"></i><h3>暂无分析结果</h3><span>student-lab / course-project</span></div>
+        <div id="analysis" hidden><p id="summary" class="issue-summary"></p><div id="labels" class="labels"></div><div class="analysis-grid"><div><h3>缺失信息</h3><ul id="missing"></ul></div><div><h3>相关 Issue</h3><ul id="related"></ul></div></div><h3>回复草稿</h3><p id="reply" class="reply"></p></div>
+      </section>
+      <section class="approval-section"><div class="section-heading"><h2><i data-lucide="shield-check"></i>写操作审批</h2><span id="action-count" class="muted">0 项待审批</span></div><div id="actions"><p class="muted">暂无写操作提案</p></div></section>
+      <section class="activity-section"><div class="tabs" role="tablist"><button id="trace-tab" class="active" role="tab" aria-selected="true"><i data-lucide="route"></i>MCP 调用 <span id="trace-count">0</span></button><button id="audit-tab" role="tab" aria-selected="false"><i data-lucide="scroll-text"></i>审计日志</button></div><div id="trace-panel" role="tabpanel"><div id="trace-meta" class="trace-meta muted"></div><div id="trace"><p class="muted">暂无工具调用</p></div></div><div id="audit-panel" role="tabpanel" hidden></div></section>
+    </div>
+  </div>
+  <footer><span>GitHub Issue MCP Agent</span><span id="footer-mode">LOCAL WORKSPACE</span></footer>
+</main>
+</body></html>
