@@ -11,6 +11,39 @@ REPO = "student-lab/course-project"
 
 
 @pytest.mark.parametrize(
+    "headers,page,next_page,truncated",
+    [
+        ({"Link": '<https://api.github.com/ignored?page=2>; rel="next"'}, 1, 2, True),
+        ({}, 1, 2, True),
+        ({"Link": '<https://api.github.com/ignored?page=1>; rel="prev"'}, 2, None, False),
+        ({"Link": '<https://api.github.com/ignored?page=4>; rel="next"'}, 3, None, True),
+    ],
+)
+async def test_pagination_uses_upstream_page_before_filtering_prs(
+    settings, store, headers, page, next_page, truncated
+):
+    requests = []
+
+    def handler(request):
+        requests.append(request)
+        return httpx.Response(
+            200,
+            headers=headers,
+            json=[{"number": 1, "pull_request": {}}, {"number": 2, "title": "Issue"}],
+        )
+
+    adapter = GitHubAdapter(settings, store, transport=httpx.MockTransport(handler))
+    result = await adapter.execute(
+        "list_open_issues", {"repo": REPO, "page": page, "per_page": 2}, "pr-page"
+    )
+    assert [item["number"] for item in result["data"]] == [2]
+    assert result["next_page"] == next_page
+    assert result["truncated"] is truncated
+    assert len(requests) == 1
+    assert requests[0].url.path == f"/repos/{REPO}/issues"
+
+
+@pytest.mark.parametrize(
     "status,code,attempts",
     [
         (401, "GITHUB_401", 1),

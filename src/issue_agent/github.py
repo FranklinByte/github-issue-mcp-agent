@@ -73,22 +73,28 @@ class GitHubAdapter:
             body = {k: v for k, v in arguments.items() if k not in {"repo", "issue_number"}}
         result = await self.request(method, path, params, body, run_id)
         data = result["data"]
+        upstream_has_next = result.pop("_has_next_page", None)
         if tool == "search_issues":
             data = data.get("items", []) if isinstance(data, dict) else []
+        raw_count = len(data) if isinstance(data, list) else 0
         if isinstance(data, list):
             data = [v for v in data if isinstance(v, dict) and "pull_request" not in v]
         if tool == "get_issue" and isinstance(data, dict) and "pull_request" in data:
             raise DomainError("BLOCK_PULL_REQUEST")
         result["data"] = self.clean(data)
         if "page" in arguments:
-            result["next_page"] = (
-                arguments["page"] + 1
-                if isinstance(data, list)
-                and len(data) == arguments["per_page"]
-                and arguments["page"] < 3
-                else None
+            # PR filtering changes the visible count, not the upstream page size.
+            # Use Link metadata when present; Mock responses omit it, so retain
+            # a conservative raw-page fallback. Never follow an upstream URL.
+            has_more = (
+                upstream_has_next
+                if isinstance(upstream_has_next, bool)
+                else raw_count == arguments["per_page"]
             )
-            result["truncated"] = isinstance(data, list) and len(data) == arguments["per_page"]
+            result["next_page"] = (
+                arguments["page"] + 1 if has_more and arguments["page"] < 3 else None
+            )
+            result["truncated"] = has_more
         result["untrusted"] = True
         return result
 
@@ -162,7 +168,14 @@ class GitHubAdapter:
                             raise DomainError("GITHUB_INVALID_JSON", uncertain=write) from exc
                         if not isinstance(data, (dict, list)):
                             raise DomainError("GITHUB_INVALID_RESPONSE", uncertain=write)
-                        return {"data": data, "rate_limit": rate, "requests_used": used}
+                        return {
+                            "data": data,
+                            "rate_limit": rate,
+                            "requests_used": used,
+                            "_has_next_page": "next" in response.links
+                            if "link" in response.headers
+                            else None,
+                        }
                 except httpx.TransportError as exc:
                     if not write and attempt + 1 < attempts:
                         await asyncio.sleep(self.settings.retry_delay * (2**attempt))

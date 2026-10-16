@@ -1,5 +1,17 @@
 # 实际验证记录
 
+## 2026-10-16 维护验证
+
+修复 `list_open_issues` 混有 Pull Request 时，先过滤 PR 再计算页长导致后续 Issue 丢失的问题。分页优先读取响应 Link 的 next 标记；没有 Link 时使用过滤前页长。仍最多三页，不跟随响应中的任意 URL。
+
+新增 4 个回归场景：混合 PR/Issue 且有 next、无 Link 的满页、只有 prev 的末页、三页上限。当前 103 项测试全部通过；Ruff 格式与静态检查、mypy、依赖检查通过。综合覆盖率 92.42%，独立分支覆盖率 88.4375%。
+
+重新执行了官方 SDK stdio MCP smoke（工具发现、读取、无审批拒绝、批准后写入、重复写入拦截），以及 50 条固定离线案例：50/50 符合预期，未经审批写入 0。GitHub 业务操作仍使用 Mock，没有调用真实模型或真实 GitHub；本次未重跑 Docker、浏览器和云端 CI。
+
+本次原始证据：[检查结果](../artifacts/maintenance-2026-10-16/checks.json)、[测试输出](../artifacts/maintenance-2026-10-16/pytest.txt)、[MCP smoke](../artifacts/maintenance-2026-10-16/mcp-smoke.json)、[离线评测](../artifacts/maintenance-2026-10-16/offline/results.json)。下面是保留的历史冻结记录，不代表重新执行。
+
+## 2026-09-07 冻结验证
+
 冻结日期：2026-09-07（Asia/Singapore）。所有本项目业务测试使用Mock GitHub；真实模型、真实GitHub业务调用与写入均未执行。公开仓库的开源调研请求另计，不是业务集成测试。
 
 | 层级 | 实际结果 | 原始证据 |
