@@ -4,7 +4,7 @@
 
 九个范围受限的 GitHub 工具、最多四轮的轻量模型循环、可检查的写操作提案、SQLite 一次性审批和幂等记录。默认完全离线：官方 MCP Client/Server 真正跨进程或容器通信，GitHub 使用持久化 MockTransport；**Offline 规则分析不冒充真实模型 Agent**。
 
-本地冻结版本 `v1.0.0`，版本与验证边界见 [freeze.json](freeze.json)。本项目有独立本地Git历史，没有配置远程仓库或推送。
+基线冻结版本 `v1.0.0`，版本与验证边界见 [freeze.json](freeze.json)。公开仓库：[FranklinByte/github-issue-mcp-agent](https://github.com/FranklinByte/github-issue-mcp-agent)。
 
 2026-10-16 在该基线之上修复了 Issue 列表过滤 PR 后提前停止分页的问题，当前 103 项测试通过。原冻结记录保留；本次检查、MCP smoke 与 50 条离线回归见 [维护验证](docs/validation.md#2026-10-16-维护验证)。
 

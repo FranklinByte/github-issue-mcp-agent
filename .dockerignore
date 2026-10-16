@@ -1,6 +1,11 @@
 .git
 .venv
 .env
+.env.*
+*.pem
+*.key
+.secrets
+credentials.json
 data
 artifacts
 tests
