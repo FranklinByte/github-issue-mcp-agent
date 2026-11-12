@@ -56,7 +56,10 @@ def proposal_problems(
 
     def describe(exc: ValidationError, prefix: str) -> list[dict[str, str]]:
         return [
-            {"field": prefix + ".".join(str(part) for part in error["loc"]), "problem": error["msg"]}
+            {
+                "field": prefix + ".".join(str(part) for part in error["loc"]),
+                "problem": error["msg"],
+            }
             for error in exc.errors(include_url=False, include_input=False)
         ][:10]
 

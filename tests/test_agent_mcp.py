@@ -154,7 +154,9 @@ async def test_invalid_action_arguments_get_one_repair_turn(settings):
         proposal = TriageProposal(
             summary="Follow-up needed",
             issue_type="bug",
-            actions=[{"tool": "create_issue", "arguments": arguments, "impact": "Create one issue."}],
+            actions=[
+                {"tool": "create_issue", "arguments": arguments, "impact": "Create one issue."}
+            ],
         )
         return {"choices": [{"message": {"content": proposal.model_dump_json()}}]}
 
