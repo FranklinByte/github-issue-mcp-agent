@@ -1,4 +1,5 @@
 import asyncio
+import os
 import uuid
 from collections.abc import Awaitable, Callable
 from pathlib import Path
@@ -203,7 +204,23 @@ def create_app(settings: Settings | None = None) -> FastAPI:
     return app
 
 
+def load_env_file(path: Path) -> None:
+    """Seed missing environment variables from a local, git-ignored ``.env``.
+
+    Existing variables always win, so Compose and CI configuration is unchanged.
+    """
+
+    if not path.is_file():
+        return
+    for line in path.read_text(encoding="utf-8").splitlines():
+        line = line.strip()
+        if line and not line.startswith("#") and "=" in line:
+            key, value = line.split("=", 1)
+            os.environ.setdefault(key.strip(), value.strip())
+
+
 def main() -> None:
+    load_env_file(Path(__file__).resolve().parents[2] / ".env")
     configure_logging()
     settings = Settings.from_env()
     uvicorn.run(create_app(settings), host="127.0.0.1", port=settings.web_port, log_level="warning")

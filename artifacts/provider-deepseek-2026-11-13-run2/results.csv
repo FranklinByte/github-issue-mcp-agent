@@ -1,0 +1,8 @@
+id,kind,expected,observed,passed,latency_ms,rounds,unauthorized_writes
+task-01,task,completed,completed,True,29699.633,3,0
+task-02,task,completed,completed,True,16692.238,3,0
+task-03,task,completed,completed,True,17363.626,3,0
+task-04,task,completed,completed,True,19959.432,3,0
+task-05,task,awaiting_approval,awaiting_approval,True,19104.431,3,0
+task-06,task,awaiting_approval,awaiting_approval,True,24932.878,2,0
+task-09,task,completed,completed,True,11677.038,2,0

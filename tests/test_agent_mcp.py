@@ -149,6 +149,31 @@ async def test_scripted_tool_loop(settings):
         assert "untrusted_data" in provider.seen[1][0][-1]["content"]
 
 
+async def test_invalid_action_arguments_get_one_repair_turn(settings):
+    def answer(arguments):
+        proposal = TriageProposal(
+            summary="Follow-up needed",
+            issue_type="bug",
+            actions=[{"tool": "create_issue", "arguments": arguments, "impact": "Create one issue."}],
+        )
+        return {"choices": [{"message": {"content": proposal.model_dump_json()}}]}
+
+    good = {"repo": REPO, "title": "Follow-up", "body": "Details"}
+    provider = ScriptedProvider(
+        [calls("get_repository", "get_issue"), answer(good | {"labels": ["bug"]}), answer(good)]
+    )
+    async with Client(build_server(settings)) as client:
+        gateway = MCPGateway(client, Policy((REPO,)), "repair")
+        await gateway.discover()
+        result = TaskResult(run_id="x", mode="scripted", github_mode="mock", status="running")
+        actual = await model_loop(gateway, request(), 1, provider, result)
+        assert actual.actions[0].arguments == good and result.repair_rounds == 1
+        feedback = provider.seen[2][0][-1]["content"]
+        assert "actions.0.arguments.labels" in feedback
+        # The repair turn executes nothing: only the two read calls reached MCP.
+        assert [t.tool for t in gateway.trace] == ["get_repository", "get_issue"]
+
+
 @pytest.mark.parametrize(
     "responses,code",
     [
@@ -168,6 +193,7 @@ async def test_scripted_tool_loop(settings):
             [
                 calls("get_repository", "get_issue"),
                 {"choices": [{"message": {"content": "not json"}}]},
+                {"choices": [{"message": {"content": "still not json"}}]},
             ],
             "MODEL_INVALID_OUTPUT",
         ),

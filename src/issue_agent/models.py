@@ -110,6 +110,7 @@ class TaskResult(StrictModel):
     trace: list[ToolTrace] = []
     rounds: int = 0
     provider_responses: int = 0
+    repair_rounds: int = 0
     protocol_version: str | None = None
     error: str | None = None
     usage: dict[str, int] | None = None
